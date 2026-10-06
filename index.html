@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NoCode — Boas Vindas</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Nunito:wght@400;500;600&display=swap">
+
+  <style>
+    /* Layout: Tela cheia centrada, uma única coluna vertical */
+    :root {
+      --bg:       #F7F5F0;
+      --fg:       #1A1814;
+      --muted:    #6B6660;
+      --accent:   #E8520A;
+      --accent-2: #F4A261;
+      --surface:  #EDEAE3;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg:       #131110;
+        --fg:       #F2EFE8;
+        --muted:    #9A958F;
+        --accent:   #F06030;
+        --accent-2: #F4A261;
+        --surface:  #1E1C19;
+        color-scheme: dark;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg:       #131110;
+      --fg:       #F2EFE8;
+      --muted:    #9A958F;
+      --accent:   #F06030;
+      --accent-2: #F4A261;
+      --surface:  #1E1C19;
+      color-scheme: dark;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding-inline: 24px;
+      padding-block: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    /* Marca topo */
+    header {
+      padding-block: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-mark svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .logo-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+    }
+
+    /* Hero */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-block: 48px;
+      max-width: 680px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .eyebrow-dot { animation: none; }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin: 0 0 24px;
+      text-wrap: balance;
+      color: var(--fg);
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0 0 40px;
+      font-weight: 500;
+      line-height: 1.65;
+    }
+
+    /* Divisor decorativo */
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    /* Cards de boas vindas */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      width: 100%;
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: 14px;
+      padding: 20px 22px;
+      border: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: var(--accent); }
+
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+
+    .card-label {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin: 0 0 4px;
+      color: var(--fg);
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Rodapé */
+    footer {
+      padding-block: 28px;
+      border-top: 1px solid var(--surface);
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="6" height="6" rx="1.5" fill="#fff"/>
+        <rect x="10" y="2" width="6" height="6" rx="1.5" fill="#fff" opacity="0.6"/>
+        <rect x="2" y="10" width="6" height="6" rx="1.5" fill="#fff" opacity="0.6"/>
+        <rect x="10" y="10" width="6" height="6" rx="1.5" fill="#fff" opacity="0.3"/>
+      </svg>
+    </div>
+    <span class="logo-text">NoCode</span>
+  </header>
+
+  <main>
+    <div class="eyebrow">
+      <span class="eyebrow-dot"></span>
+      Você está no lugar certo
+    </div>
+
+    <h1>Boas<br><em>Vindas.</em></h1>
+
+    <div class="divider"></div>
+
+    <p class="subtitle">
+      Estamos felizes em ter você aqui. A partir de agora, você aprende a criar,
+      construir e lançar soluções reais — sem precisar escrever uma linha de código.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🚀</div>
+        <p class="card-label">Construa rápido</p>
+        <p class="card-desc">Crie projetos do zero com ferramentas visuais e intuitivas.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <p class="card-label">Aprenda fazendo</p>
+        <p class="card-desc">Metodologia prática com projetos reais desde o primeiro dia.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <p class="card-label">Comunidade viva</p>
+        <p class="card-desc">Você não está sozinho. Aprenda junto com outros criadores.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>© 2026 NoCode</span>
+    <span>Bem-vindo à turma ✦</span>
+  </footer>
+
+</body>
+</html>
